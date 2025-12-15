@@ -1,0 +1,83 @@
+spring:
+  profiles: 
+    active: "local"
+  application:
+    name: product-catalog-sb-api
+  
+---
+spring:
+  config:
+    activate:
+      on-profile: local
+    myID: THIS IS LOCAL
+  
+datasource:
+  secret-id: labs/database/cas-demo-aurora/custom-apps/cas-demo
+  db-schema-name: products
+  
+security:
+  oauth2:
+    resource:
+      jwk:
+        key-set-uri: https://cognito-idp.us-west-2.amazonaws.com/us-west-2_HnIIhNPah/.well-known/jwks.json
+
+config:
+  casreferenceservice-searchurl: https://cas-erd-api.dev.matson.us/casreferenceservice/api/v1/
+  gates-webservice: https://gates-svc.dev.matson.us/gates-service/dashboard/web/
+
+server:
+  compression:
+    enabled: true
+    mime-types: text/html,text/xml,text/plain,text/css,text/javascript,application/javascript,application/json
+    min-response-size: 1024
+
+---
+spring:
+  config:
+    activate:
+      on-profile: dev
+    myID: THIS IS DEV
+  
+datasource:
+  secret-id: labs/database/cas-demo-aurora/custom-apps/cas-demo
+  db-schema-name: products
+security:
+  oauth2:
+    resource:
+      jwk:
+        key-set-uri: https://cognito-idp.us-west-2.amazonaws.com/us-west-2_HnIIhNPah/.well-known/jwks.json
+
+config:
+  casreferenceservice-searchurl: https://cas-erd-api.dev.matson.us/casreferenceservice/api/v1/
+  gates-webservice: https://gates-svc.dev.matson.us/gates-service/dashboard/web/
+
+server:
+  compression:
+    enabled: true
+    mime-types: text/html,text/xml,text/plain,text/css,text/javascript,application/javascript,application/json
+    min-response-size: 1024
+---
+spring:
+  config:
+    activate:
+      on-profile: pp
+    myID: THIS IS PREPROD
+  
+datasource:
+  secret-id: labs/database/cas-demo-aurora/custom-apps/cas-demo
+  db-schema-name: products
+security:
+  oauth2:
+    resource:
+      jwk:
+        key-set-uri: https://cognito-idp.us-west-2.amazonaws.com/us-west-2_HnIIhNPah/.well-known/jwks.json
+
+config:
+  casreferenceservice-searchurl: https://cas-erd-api.dev.matson.us/casreferenceservice/api/v1/
+  gates-webservice: https://gates-svc.dev.matson.us/gates-service/dashboard/web/
+
+server:
+  compression:
+    enabled: true
+    mime-types: text/html,text/xml,text/plain,text/css,text/javascript,application/javascript,application/json
+    min-response-size: 1024

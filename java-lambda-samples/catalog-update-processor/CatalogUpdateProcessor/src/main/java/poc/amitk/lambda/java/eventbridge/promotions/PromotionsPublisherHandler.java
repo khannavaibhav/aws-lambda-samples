@@ -56,6 +56,7 @@ public class PromotionsPublisherHandler implements RequestHandler<ScheduledEvent
         ProductPromotion productPromotion = promotionsCollectorService.gatherPromotionsForProduct(catalogUpdateEvent);
         logger.info("Received promotion: {}", productPromotion);
         logger.info("publishing the promotion");
+        
         eventBridgePublisher.publishEvent(productPromotion);
     }
 }
